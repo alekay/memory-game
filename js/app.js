@@ -1,7 +1,7 @@
 // card grabs all of the li's with class 'card'
-const card = document.getElementsByClassName('card');
+let card = document.getElementsByClassName('card');
 // cards uses the rest operator to represent all of the possible array elements
-const cards = [...card];
+let cards = [...card];
 // Deck of all cards in game
 const deck = document.querySelector('.deck');
 
