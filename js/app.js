@@ -3,26 +3,50 @@ let card = document.getElementsByClassName('card');
 // cards uses the rest operator to represent all of the possible array elements
 let cards = [...card];
 // Deck of all cards in game
-const deck = document.querySelector('.deck');
+const deck = document.getElementById('card-deck');
+
+// matched card variable
+let matchedCard = document.getElementsByClassName('match');
+
+// array for opened cards
+let openedCards = [];
+
+// shuffle cards, take parameter array, return shuffled array
+function shuffle(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
 
 // startGame function that shuffles cards and makes deck of all cards
 function startGame() {
     // create variable for shuffled cards that uses 'shuffle array' method, shuffling the 'cards' array
-    const shuffledCards = shuffle(cards);
+    cards = shuffle(cards);
     // loop through for the length of the shuffled cards array
-    for (let i = 0; i < shuffledCards.length; i++) {
+    for (let i = 0; i < cards.length; i++)  {
+        deck.innerHTML = "";
         // 1. use forEach function (which takes function as input) on empty array
         // 2. use .call to take first argument and replace .this inside of the function, function takes arg (item)
-        [].forEach.call(shuffledCards, function(item) {
+        [].forEach.call(cards, function(item) {
             // 3. append item to the deck of cards
             // this is where the actual shuffle happens
             deck.appendChild(item);
         });
+        // remove all classes from cards on startGame
+        cards[i].classList.remove('show', 'open', 'match', 'disabled');
     }
 }
 
-// triggers the 'startGame' function on window.onload
-window.onload = startGame();
+// triggers the 'startGame' function onload
+document.body.onload = startGame();
 
 // display the card's symbol (put this functionality in another function that you call from this one)
 // set function to toggle card's classes - will be called upon by event listener when clicked
@@ -42,27 +66,64 @@ for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener('click', displayCard);
 };
 
-// Shuffle function "Knuth Shuffle"
-function shuffle(array) {
-    // modified var to let for ES6
-    let currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
-
-
 //   - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
 //   - if the list already has another card, check to see if the two cards match
-    // + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
-    // + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+function cardOpen(){
+    openedCards.push(this);
+    let cardNumber = openedCards.length;
+    if (cardNumber === 2){
+        moveCounter();
+        if(openedCards[0].type === openedCards [1].type) {
+            matched();
+        } else {
+            unmatched();
+        }
+    }
+}
+
+// + if the cards do match, lock the cards in the open position
+function matched() {
+    openedCards[0].classList.add('match', 'disabled');
+    openedCards[1].classList.add('match', 'disabled');
+    openedCards[0].classList.remove('show', 'open');
+    openedCards[1].classList.remove('show', 'open');
+    openedCards = [];
+}
+
+// + if the cards do not match, remove the cards from the list and hide the card's symbol 
+function unmatched() {
+    openedCards[0].classList.add('unmatched');
+    openedCards[1].classList.add('unmatched');
+    disable();
+    setTimeout(function(){
+        openedCards[0].classList.remove('show', 'open', 'unmatched');
+        openedCards[1].classList.remove('show', 'open', 'unmatched');
+        enable();
+        openedCards = [];
+    }, 1100);
+}
+
+// disable cards when not matched
+function disable() {
+    Array.prototype.filter.call(cards, function(card) {
+        card.classList.add('disabled');
+    });
+}
+
+function enable() {
+    Array.prototype.filter.call(cards, function(card) {
+        card.classList.remove('disabled');
+        for (let i = 0; i < matchedCard.length; i++) {
+            matchedCard[i].classList.add('disabled');
+        }
+    });
+}
     // + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
     // + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
 
+// loop to add event listeners to each card
+for (let i = 0; i < cards.length; i++){
+    card = cards[i];
+    card.addEventListener("click", displayCard);
+    card.addEventListener("click", cardOpen);
+};

@@ -75,12 +75,24 @@ h1 {
 
 .deck .card.show {
     font-size: 60px;
+    background-color: #02ccba;
 }
 
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background-color: #1b9c01;
     font-size: 33px;
+}
+
+.deck .card.unmatched {
+    cursor: default;
+    background-color: #441313;
+    font-size: 10px;
+}
+
+.deck .card.disabled {
+    pointer-events: none;
+    background-color: #000;
 }
 
 /*
