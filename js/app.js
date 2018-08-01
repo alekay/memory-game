@@ -65,6 +65,13 @@ const displayCard = function(){
     this.classList.toggle('disabled');
 }
 
+// loop through cards and add event listeners to each card
+for (let i = 0; i < cards.length; i++){
+    card = cards[i];
+    card.addEventListener("click", displayCard);
+    card.addEventListener("click", cardOpen);
+};
+
 // this gives the primary toggle for the cards
 // loop through cards array
 for (let i = 0; i < cards.length; i++){
@@ -73,13 +80,16 @@ for (let i = 0; i < cards.length; i++){
     cards[i].addEventListener('click', displayCard);
 };
 
-//   - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
-//   - if the list already has another card, check to see if the two cards match
+
 function cardOpen(){
+    //   - add the card to a *list* of "open" cards 
     openedCards.push(this);
+    // set value for the cards open
     let cardNumber = openedCards.length;
+    // if cards open is two, incriment the move throug its function
     if (cardNumber === 2){
         moveCounter();
+        //   - if the list already has another card, check to see if the two cards match
         if(openedCards[0].type === openedCards [1].type) {
             matched();
         } else {
@@ -107,7 +117,7 @@ function unmatched(){
         openedCards[1].classList.remove('show', 'open', 'unmatched');
         enable();
         openedCards = [];
-    }, 1100);
+    }, 1200);
 }
 
 // disable cards when not matched
@@ -117,6 +127,7 @@ function disable(){
     });
 }
 
+// enable cards when matched
 function enable(){
     Array.prototype.filter.call(cards, function(card){
         card.classList.remove('disabled');
@@ -125,16 +136,10 @@ function enable(){
         }
     });
 }
+
 // + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
 function moveCounter(){
     moves++;
     counter.innerHTML = moves;
 }
 // + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
-
-// loop to add event listeners to each card
-for (let i = 0; i < cards.length; i++){
-    card = cards[i];
-    card.addEventListener("click", displayCard);
-    card.addEventListener("click", cardOpen);
-};
