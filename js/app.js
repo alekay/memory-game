@@ -47,6 +47,9 @@ function startGame(){
         // remove all classes from cards on startGame
         cards[i].classList.remove('show', 'open', 'match', 'disabled');
     }
+    // reset moves
+    moves = 0;
+    counter.innerHTML = moves;
 }
 
 // triggers the 'startGame' function onload
