@@ -15,6 +15,9 @@ let matchedCard = document.getElementsByClassName('match');
 // array for opened cards
 let openedCards = [];
 
+// select restart button
+const restart = document.querySelector('.restart');
+
 // shuffle cards, take parameter array, return shuffled array
 function shuffle(array){
     let currentIndex = array.length, temporaryValue, randomIndex;
@@ -31,7 +34,7 @@ function shuffle(array){
 }
 
 // startGame function that shuffles cards and makes deck of all cards
-function startGame(){
+startGame = function startGame(){
     // create variable for shuffled cards that uses 'shuffle array' method, shuffling the 'cards' array
     cards = shuffle(cards);
     // loop through for the length of the shuffled cards array
@@ -54,6 +57,9 @@ function startGame(){
 
 // triggers the 'startGame' function onload
 document.body.onload = startGame();
+
+// event listener for restart button, calls startGame function
+restart.addEventListener('click', startGame);
 
 // display the card's symbol (put this functionality in another function that you call from this one)
 // set function to toggle card's classes - will be called upon by event listener when clicked
@@ -80,7 +86,7 @@ for (let i = 0; i < cards.length; i++){
     cards[i].addEventListener('click', displayCard);
 };
 
-
+// open card fuction
 function cardOpen(){
     //   - add the card to a *list* of "open" cards 
     openedCards.push(this);
@@ -109,19 +115,27 @@ function matched(){
 
 // + if the cards do not match, remove the cards from the list and hide the card's symbol 
 function unmatched(){
+    // give card one and two 'unmatched' class
     openedCards[0].classList.add('unmatched');
     openedCards[1].classList.add('unmatched');
+    // add disable function which adds 'disabled' class to the card
     disable();
+    // assign timout variable
     setTimeout(function(){
+        // first opened card added to array loses these classes
         openedCards[0].classList.remove('show', 'open', 'unmatched');
+        // the second card added to array loses these classes
         openedCards[1].classList.remove('show', 'open', 'unmatched');
         enable();
+        // opened cards now contains the cards added through their index number (0, 1)
         openedCards = [];
+        // timout occurs so that the cards don't immediately flip back over
+        
     }, 1200);
 }
 
 // disable cards when not matched
-function disable(){
+const disable = function disable(){
     Array.prototype.filter.call(cards, function(card) {
         card.classList.add('disabled');
     });
@@ -136,6 +150,7 @@ function enable(){
         }
     });
 }
+
 
 // + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
 function moveCounter(){
