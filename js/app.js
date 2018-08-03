@@ -15,6 +15,8 @@ let matchedCard = document.getElementsByClassName('match');
 // array for opened cards
 let openedCards = [];
 
+// let timeout;
+
 // select restart button
 const restart = document.querySelector('.restart');
 
@@ -35,6 +37,7 @@ function shuffle(array){
 
 // startGame function that shuffles cards and makes deck of all cards
 startGame = function startGame(){
+    // clearTimeout(timeout);
     // create variable for shuffled cards that uses 'shuffle array' method, shuffling the 'cards' array
     cards = shuffle(cards);
     // loop through for the length of the shuffled cards array
@@ -55,7 +58,7 @@ startGame = function startGame(){
     counter.innerHTML = moves;
 }
 
-// triggers the 'startGame' function onload
+// triggers the 'startGame' function on body load
 document.body.onload = startGame();
 
 // event listener for restart button, calls startGame function
@@ -120,8 +123,8 @@ function unmatched(){
     openedCards[1].classList.add('unmatched');
     // add disable function which adds 'disabled' class to the card
     disable();
-    // assign timout variable
-    setTimeout(function(){
+    // assign timout variable  timeout = 
+   setTimeout(function(){
         // first opened card added to array loses these classes
         openedCards[0].classList.remove('show', 'open', 'unmatched');
         // the second card added to array loses these classes
@@ -130,7 +133,6 @@ function unmatched(){
         // opened cards now contains the cards added through their index number (0, 1)
         openedCards = [];
         // timout occurs so that the cards don't immediately flip back over
-        
     }, 1200);
 }
 
@@ -150,7 +152,6 @@ function enable(){
         }
     });
 }
-
 
 // + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
 function moveCounter(){
