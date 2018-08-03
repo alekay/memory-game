@@ -15,7 +15,7 @@ let matchedCard = document.getElementsByClassName('match');
 // array for opened cards
 let openedCards = [];
 
-// let timeout;
+let timeout;
 
 // select restart button
 const restart = document.querySelector('.restart');
@@ -37,7 +37,8 @@ function shuffle(array){
 
 // startGame function that shuffles cards and makes deck of all cards
 startGame = function startGame(){
-    // clearTimeout(timeout);
+    clearTimeout(timeout);
+    openedCards = [];
     // create variable for shuffled cards that uses 'shuffle array' method, shuffling the 'cards' array
     cards = shuffle(cards);
     // loop through for the length of the shuffled cards array
@@ -51,7 +52,7 @@ startGame = function startGame(){
             deck.appendChild(item);
         });
         // remove all classes from cards on startGame
-        cards[i].classList.remove('show', 'open', 'match', 'disabled');
+        cards[i].classList.remove('show', 'open', 'match', 'disabled', 'unmatched');
     }
     // reset moves
     moves = 0;
@@ -123,8 +124,8 @@ function unmatched(){
     openedCards[1].classList.add('unmatched');
     // add disable function which adds 'disabled' class to the card
     disable();
-    // assign timout variable  timeout = 
-   setTimeout(function(){
+    // assign timout variable  
+    timeout = setTimeout(function(){
         // first opened card added to array loses these classes
         openedCards[0].classList.remove('show', 'open', 'unmatched');
         // the second card added to array loses these classes
