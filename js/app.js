@@ -15,6 +15,7 @@ let matchedCard = document.getElementsByClassName('match');
 // array for opened cards
 let openedCards = [];
 
+// declare timeout variable to be used on timeout function
 let timeout;
 
 // select restart button
@@ -37,7 +38,9 @@ function shuffle(array){
 
 // startGame function that shuffles cards and makes deck of all cards
 startGame = function startGame(){
+    // clearTimeout on reset
     clearTimeout(timeout);
+    // empty the openedCards array on reset
     openedCards = [];
     // create variable for shuffled cards that uses 'shuffle array' method, shuffling the 'cards' array
     cards = shuffle(cards);
@@ -124,7 +127,7 @@ function unmatched(){
     openedCards[1].classList.add('unmatched');
     // add disable function which adds 'disabled' class to the card
     disable();
-    // assign timout variable  
+    // assign timout variable to function to be used as callback
     timeout = setTimeout(function(){
         // first opened card added to array loses these classes
         openedCards[0].classList.remove('show', 'open', 'unmatched');
