@@ -178,10 +178,10 @@ function moveCounter(){
     if (moves > 8 && moves < 16){
         for (let i = 0; i < 3; i++){
             // if moves > 8 and < 19 and i index is 2 remove visibility of star index 2
-            if(i === 2){
+            if(i === 0){
                 stars[i].classList.remove('fa-star');
                 stars[1].classList.add('silver');
-                stars[0].classList.add('silver');
+                stars[2].classList.add('silver');
             }
         }
     } else if (moves >= 16){
@@ -189,8 +189,8 @@ function moveCounter(){
             // if moves >= 16 and i index is 1 remove visibility of star index 1
             if(i === 1){
                 stars[i].classList.remove('fa-star');       
-                stars[0].classList.remove('silver');
-                stars[0].classList.add('bronze');   
+                stars[2].classList.remove('silver');
+                stars[2].classList.add('bronze');   
             }
         }
     }

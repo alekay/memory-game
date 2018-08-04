@@ -101,7 +101,7 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    
     margin-bottom: 10px;
 }
 
@@ -122,6 +122,10 @@ h1 {
     cursor: pointer;
 }
 
+#restart{
+    display: inline-block;
+}
+
 .restart:hover {
     color: #02b3e4;
 }
@@ -136,6 +140,11 @@ h1 {
 
 .bronze {
     color: #cd7f32;
+}
+
+.timer {
+	display: inline-block;
+	margin: 0 1rem;
 }
 
 /* viewports for mobile and tablet */
