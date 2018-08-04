@@ -18,10 +18,11 @@ let openedCards = [];
 // variable for star icon
 const stars = document.querySelectorAll('.fa-star');
 
-let starsLis
+// stars li
+let starsList = document.querySelectorAll('.stars li');
 
 // declare timeout variable to be used on timeout function
-let timeout;
+let timeout, interval;
 
 // select restart button
 const restart = document.querySelector('.restart');
@@ -42,7 +43,7 @@ function shuffle(array){
 }
 
 // startGame function that shuffles cards and makes deck of all cards
-startGame = function startGame(){
+function startGame(){
     // clearTimeout on reset
     clearTimeout(timeout);
     // empty the openedCards array on reset
@@ -70,8 +71,12 @@ startGame = function startGame(){
         stars[i].classList.add('fa-star');
         stars[1].classList.remove('silver');
         stars[0].classList.remove('silver');
-        stars[0].classList.remove('bronze');
+        stars[2].classList.remove('bronze');
     }
+    // reset timer
+    let timer = document.querySelector('.timer');
+    timer.innerHTML = '0 hours 0 minutes 0 seconds';
+    clearInterval(interval);
 }
 
 // triggers the 'startGame' function on body load
@@ -79,6 +84,7 @@ document.body.onload = startGame();
 
 // event listener for restart button, calls startGame function
 restart.addEventListener('click', startGame);
+
 
 // display the card's symbol (put this functionality in another function that you call from this one)
 // set function to toggle card's classes - will be called upon by event listener when clicked
@@ -115,7 +121,7 @@ function cardOpen(){
     if (cardNumber === 2){
         moveCounter();
         //   - if the list already has another card, check to see if the two cards match
-        if(openedCards[0].type === openedCards [1].type) {
+        if(openedCards[0].type === openedCards[1].type) {
             matched();
         } else {
             unmatched();
@@ -173,15 +179,21 @@ function enable(){
 function moveCounter(){
     moves++;
     counter.innerHTML = moves;
-
+    // start timer on first move
+    if (moves ===1){
+        second = 0;
+        minute = 0;
+        hour = 0;
+        startTimer();
+    }
     // star rating based on moves inside moveCounter function
     if (moves > 8 && moves < 16){
         for (let i = 0; i < 3; i++){
             // if moves > 8 and < 19 and i index is 2 remove visibility of star index 2
             if(i === 0){
                 stars[i].classList.remove('fa-star');
-                stars[1].classList.add('silver');
                 stars[2].classList.add('silver');
+                stars[1].classList.add('silver');
             }
         }
     } else if (moves >= 16){
@@ -195,5 +207,26 @@ function moveCounter(){
         }
     }
 }
+
+// game timer
+let second = 0, minute = 0, hour = 0;
+let timer = document.querySelector('.timer');
+function startTimer(){
+    interval = setInterval(function(){
+        timer.innerHTML = hour + ' hours ' + minute + ' minutes ' + second + ' seconds';
+        second++
+        if(second === 60){
+            minute++;
+            second = 0;
+        }
+        if(minute === 60){
+            hour++;
+            minute = 0;
+        }
+        
+    }, 1000);
+}
+
+card.addEventListener('click', startTimer);
 
 // + if all cards have matched, display a message with the final score
