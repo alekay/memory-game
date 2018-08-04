@@ -15,6 +15,11 @@ let matchedCard = document.getElementsByClassName('match');
 // array for opened cards
 let openedCards = [];
 
+// variable for star icon
+const stars = document.querySelectorAll('.fa-star');
+
+let starsLis
+
 // declare timeout variable to be used on timeout function
 let timeout;
 
@@ -157,9 +162,27 @@ function enable(){
     });
 }
 
-// + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+// + increment the move counter and display it on the page
 function moveCounter(){
     moves++;
     counter.innerHTML = moves;
+
+    // star rating based on moves inside moveCounter function
+    if (moves > 8 && moves < 16){
+        for (let i = 0; i < 3; i++){
+            // if moves > 8 and < 19 and i index is 2 remove visibility of star index 2
+            if(i === 2){
+                stars[i].style.visibility = 'collapse';
+            }
+        }
+    } else if (moves >= 16){
+        for (let i = 0; i <3; i++){
+            // if moves >= 16 and i index is 1 remove visibility of star index 1
+            if(i === 1){
+                stars[i].style.visibility = 'collapse';                
+            }
+        }
+    }
 }
-// + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+
+// + if all cards have matched, display a message with the final score
