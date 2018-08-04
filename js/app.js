@@ -65,6 +65,10 @@ startGame = function startGame(){
     // reset moves
     moves = 0;
     counter.innerHTML = moves;
+    // reset star rating
+    for (let i = 0; i < stars.legth; i++){
+        stars[i].classList.add('fa-star');
+    }
 }
 
 // triggers the 'startGame' function on body load
@@ -172,14 +176,14 @@ function moveCounter(){
         for (let i = 0; i < 3; i++){
             // if moves > 8 and < 19 and i index is 2 remove visibility of star index 2
             if(i === 2){
-                stars[i].style.visibility = 'collapse';
+                stars[i].classList.remove('fa-star'); 
             }
         }
     } else if (moves >= 16){
         for (let i = 0; i <3; i++){
             // if moves >= 16 and i index is 1 remove visibility of star index 1
             if(i === 1){
-                stars[i].style.visibility = 'collapse';                
+                stars[i].classList.remove('fa-star');           
             }
         }
     }
