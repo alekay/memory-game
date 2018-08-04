@@ -122,13 +122,28 @@ h1 {
     cursor: pointer;
 }
 
+.restart:hover {
+    color: #02b3e4;
+}
+
+.fa-star {
+    color: #f3be2c;
+}
+
+.silver {
+    color: #c0c0c0;
+}
+
+.bronze {
+    color: #cd7f32;
+}
+
 /* viewports for mobile and tablet */
 
 @media (max-width: 320px) {
 	.deck {
 		width: 85%;
 	}
-
 	.deck .card {
 		height: 4.7rem;
 		width: 4.7rem;
@@ -137,18 +152,12 @@ h1 {
 
 
 @media (min-width: 768px) {
-
 	.deck {
 		width: 660px;
 		height: 680px;
 	}
-
 	.deck .card {
 		height: 125px;
 		width: 125px;
-	}
-
-	.popup {
-		width: 60%;
 	}
 }
