@@ -227,6 +227,4 @@ function startTimer(){
     }, 1000);
 }
 
-card.addEventListener('click', startTimer);
-
 // + if all cards have matched, display a message with the final score
