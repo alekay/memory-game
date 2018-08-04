@@ -27,6 +27,10 @@ let timeout, interval;
 // select restart button
 const restart = document.querySelector('.restart');
 
+let modal = document.getElementById('window');
+
+let closeIcon = document.querySelector('.close');
+
 // shuffle cards, take parameter array, return shuffled array
 function shuffle(array){
     let currentIndex = array.length, temporaryValue, randomIndex;
@@ -99,8 +103,9 @@ const displayCard = function(){
 // loop through cards and add event listeners to each card
 for (let i = 0; i < cards.length; i++){
     card = cards[i];
-    card.addEventListener("click", displayCard);
-    card.addEventListener("click", cardOpen);
+    card.addEventListener('click', displayCard);
+    card.addEventListener('click', cardOpen);
+    card.addEventListener('click', congrats);
 };
 
 // this gives the primary toggle for the cards
@@ -208,6 +213,7 @@ function moveCounter(){
     }
 }
 
+// TODO: Fix interval delay, needs to start when first cards are open
 // game timer
 let second = 0, minute = 0, hour = 0;
 let timer = document.querySelector('.timer');
@@ -228,3 +234,32 @@ function startTimer(){
 }
 
 // + if all cards have matched, display a message with the final score
+function congrats(){
+    if(matchedCard.length === 16){
+        clearInterval(interval);
+        finalTime = timer.innerHTML;
+        // show congrats
+        modal.classList.add('show');
+        // star rating
+        let starRating = document.querySelector('.stars').innerHTML;
+        // display the stats
+        document.getElementById('finalMove').innerHTML = moves;
+        document.getElementById('starRating').innerHTML = starRating;
+        document.getElementById('totalTime').innerHTML = finalTime;
+        // close modal
+        closeModal();
+    };
+}
+
+// close modal function
+function closeModal(){
+    closeIcon.addEventListener('click', function(e){
+    modal.classList.remove('show');
+    });
+}
+
+// play again function
+function playAgain(){
+    modal.classList.remove('show');
+    startGame();
+}
