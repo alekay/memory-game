@@ -223,7 +223,7 @@ h1 {
 
 /* viewports for mobile and tablet */
 
-@media (max-width: 320px) {
+@media screen and (max-width: 425px) {
 	.deck {
         width: 85%;
         min-height: 300px;
@@ -268,7 +268,7 @@ h1 {
     }
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
 	.deck {
 		width: 660px;
 		height: 680px;
