@@ -266,7 +266,7 @@ h1 {
 
 /* tablet view */
 
-@media (min-width: 426px) and (max-width: 768px) {
+@media screen and (min-width: 426px) and (max-width: 768px) {
 	.deck {
 		width: 660px;
 		height: 680px;
