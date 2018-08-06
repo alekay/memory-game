@@ -74,7 +74,7 @@ function startGame(){
     for (let i = 0; i < stars.length; i++){
         stars[i].classList.add('fa-star');
         stars[1].classList.remove('silver');
-        stars[0].classList.remove('silver');
+        stars[2].classList.remove('silver');
         stars[2].classList.remove('bronze');
     }
     // reset timer
