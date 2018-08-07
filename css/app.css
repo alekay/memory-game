@@ -243,20 +243,20 @@ h1 {
         margin: 0;
     }
     .deck .card.show {
-        font-size: 30px;
+        font-size: 25px;
         background-color: #02ccba;
     }
     
     .deck .card.match {
         cursor: default;
         background-color: #1b9c01;
-        font-size: 35px;
+        font-size: 30px;
     }
     
     .deck .card.unmatched {
         cursor: default;
         background-color: #441313;
-        font-size: 25px
+        font-size: 20px
     }
     h1 {
         font-size: 1.2rem;
