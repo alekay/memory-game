@@ -8,9 +8,9 @@
  - The user's time, moves, and rating (bronze, silver, gold) will be displayed upon victory.
  
 # Rating system
-If the user can win in under 9 moves, the rating will be gold (3 stars)  
-If the user can win in under 16 moves, the rating will be silver (2 stars)
-Once the user makes over 16 moves, the rating will be bronze (1 star)
+- If the user can win in under 9 moves, the rating will be gold (3 stars).  
+- If the user can win in under 16 moves, the rating will be silver (2 stars).
+- Once the user makes over 16 moves, the rating will be bronze (1 star).
 
 # Play the Memory Game
 [Memory Game](https://alekay.github.io/memory-game/)
