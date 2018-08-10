@@ -2,6 +2,7 @@
 let card = document.getElementsByClassName('card');
 // cards uses the spread operator to represent all of the possible array elements
 let cards = [...card];
+console.log(cards);
 // Deck of all cards in game
 const deck = document.getElementById('card-deck');
 
