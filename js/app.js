@@ -1,6 +1,6 @@
 // card grabs all of the li's with class 'card'
 let card = document.getElementsByClassName('card');
-// cards uses the rest operator to represent all of the possible array elements
+// cards uses the spread operator to represent all of the possible array elements
 let cards = [...card];
 // Deck of all cards in game
 const deck = document.getElementById('card-deck');
@@ -192,7 +192,7 @@ let second = 0, minute = 0, hour = 0;
 let timer = document.querySelector('.timer');
 function startTimer(){
     interval = setInterval(function(){
-        timer.innerHTML = hour + ' hours ' + minute + ' minutes ' + second + ' seconds';
+        timer.innerHTML = `${hour} hours ${minute} minutes ${second} seconds`;
         second++
         if(second === 60){
             minute++;
