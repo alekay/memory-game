@@ -1,5 +1,5 @@
-# Descripion
-**Memory Game**
+# Memory Game
+## Description
  - The game is comprised of 16 cards that can be flipped over (one-by-one) to reveal their icon.
  - 2 cards can be flipped over in one move.
  - If the cards match, they will move you one step closer to victory.
@@ -12,9 +12,7 @@
 
 # Images
 **All images were obtained from...**
-- [Udacity](https://www.udacity.com/)
-- [Font-Awesome](https://fontawesome.com/)
-- [Subtle Paterns by Toptal](https://www.toptal.com/designers/subtlepatterns/)
+[Udacity](https://www.udacity.com/), [Font-Awesome](https://fontawesome.com/), [Subtle Paterns by Toptal](https://www.toptal.com/designers/subtlepatterns/)
 
 # Contribute
 If you would like to contribute to this project please feel free to make a pull request or propose a file change.
