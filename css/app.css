@@ -118,7 +118,7 @@ h1 {
     cursor: pointer;
 }
 
-#restart{
+.restart{
     display: inline-block;
 }
 
