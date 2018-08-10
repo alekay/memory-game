@@ -11,8 +11,9 @@
 [Memory Game](https://alekay.github.io/memory-game/)
 
 # Images
-**All images were obtained from...**
-[Udacity](https://www.udacity.com/), [Font-Awesome](https://fontawesome.com/), [Subtle Paterns by Toptal](https://www.toptal.com/designers/subtlepatterns/)
+**All images were obtained from...**  
+
+[Udacity](https://www.udacity.com/) [Font-Awesome](https://fontawesome.com/) [Subtle Paterns by Toptal](https://www.toptal.com/designers/subtlepatterns/)
 
 # Contribute
 If you would like to contribute to this project please feel free to make a pull request or propose a file change.
