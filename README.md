@@ -6,6 +6,11 @@
  - If the cards do not match, you will have to use your memory to try and match them as you continue.
  - Victory will occur when the user has matched all 8 possible matches.
  - The user's time, moves, and rating (bronze, silver, gold) will be displayed upon victory.
+ 
+# Rating system
+If the user can win in under 9 moves, the rating will be gold (3 stars)  
+If the user can win in under 16 moves, the rating will be silver (2 stars)
+Once the user makes over 16 moves, the rating will be bronze (1 star)
 
 # Play the Memory Game
 [Memory Game](https://alekay.github.io/memory-game/)
