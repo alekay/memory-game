@@ -1,6 +1,5 @@
-# Memory Game
-## Description
- - The game is comprised of 16 cards that can be flipped over (one-by-one) to reveal their icon.
+# Description
+ - The Memory Game is comprised of 16 cards that can be flipped over (one-by-one) to reveal their icon.
  - 2 cards can be flipped over in one move.
  - If the cards match, they will move you one step closer to victory.
  - If the cards do not match, you will have to use your memory to try and match them as you continue.
